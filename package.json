@@ -7,7 +7,7 @@
   "scripts": {
     "__FOR_DEV__": "To dev on mobile, change all `0.0.0.0` to your local IP",
     "dev:tailwind": "pnpm tailwindcss -i ./assets/app.css -o ./assets/main.css --watch",
-    "dev:server": "hugo server --buildDrafts --watch --minify --disableFastRender --themesDir=../.. --source=exampleSite --baseURL=0.0.0.0 --bind=0.0.0.0 --port=1313",
+    "dev:server": "hugo server --buildDrafts --watch --minify --disableFastRender --themesDir=../.. --source=exampleSite --baseURL=0.0.0.0 --bind=0.0.0.0 --port=1314",
     "dev:open": "open http://0.0.0.0:1313/",
     "build:go": "cp exampleSite/go.default.mod exampleSite/go.mod",
     "build:generate": "hugo --gc --minify --themesDir=../.. --source=exampleSite --config=go.toml,config.toml",

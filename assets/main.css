@@ -695,7 +695,7 @@ body {
 .prose :where(h1):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
   color: var(--tw-prose-headings);
   font-weight: 800;
-  font-size: 2.25em;
+  font-size: 1.5em;
   margin-top: 0;
   margin-bottom: 0.8888889em;
   line-height: 1.1111111;
@@ -1238,6 +1238,9 @@ body {
   margin-bottom: 0.375rem;
 }
 
+.mb-4 {
+  margin-bottom: 2rem;
+}
 .mb-16 {
   margin-bottom: 4rem;
 }
@@ -1672,11 +1675,20 @@ body {
 }
 
 article {
-  font-size: 1.125rem;
+  font-size: 1rem;
   line-height: 1.75rem;
   line-height: 1.8;
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+article .tag{
+  font-size: 0.7em;
+  padding: 0.4rem 0.6rem;
+  background-color: var(--tw-text-color);
+  color: rgb(0 0 0 / var(--bg));
+  margin-right: 10px;
+  border-radius: 2px;
 }
 
 :is(.dark article) {

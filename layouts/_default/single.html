@@ -1,11 +1,10 @@
 {{ define "main" }}
 
 <article>
-  <header class="mb-16">
-    <h1 class="!my-0 pb-2.5">{{ .Title }}</h1>
-
+  <header class="mb-12">
+    <!-- 发布日期及作者 -->
     {{ if ne .Type "page" }}
-    <div class="text-sm antialiased opacity-60">
+    <div class="text-sm antialiased opacity-60 mb-4">
       {{ if .Date }}
       <time>{{ .Date | time.Format ":date_medium" }}</time>
       {{ end }}<!---->
@@ -15,24 +14,27 @@
       <span class="mx-1">&middot;</span>
       <span>{{ $single_author }}</span>
       {{ end }}
+
     </div>
+    {{ end }}
+    <!-- 文章标题 -->
+    <h1 class="pb-2.5 mb-1.5">{{ .Title }}</h1>
+    <!-- 文章 Tags -->
+    {{ if .Params.tags }}
+    <footer class="mt-1 flex flex-wrap">
+      {{ range .Params.tags }} {{ $href := print (absURL "tags/") (urlize .) }}
+      <a
+        class="tag mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+        href="{{ $href }}"
+        >#{{ . }}</a
+      >
+      {{ end }}
+    </footer>
     {{ end }}
   </header>
 
   <section>{{ .Content }}</section>
 
-  <!-- Post Tags -->
-  {{ if .Params.tags }}
-  <footer class="mt-12 flex flex-wrap">
-    {{ range .Params.tags }} {{ $href := print (absURL "tags/") (urlize .) }}
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
-      href="{{ $href }}"
-      >{{ . }}</a
-    >
-    {{ end }}
-  </footer>
-  {{ end }}
 
   <!-- Post Nav -->
   {{ if not site.Params.disablePostNavigation }}<!---->
