@@ -24,7 +24,7 @@
   <!---->
   <meta
     name="description"
-    content="{{- site.Params.description | default (print `A personal blog`) -}}"
+    content="{{- site.Params.description | default (print `To the very best of times`) -}}"
   />
   <meta name="author" content="{{- $site_author -}}" />
   {{- end -}}
@@ -34,8 +34,8 @@
   <!---->
   {{- $custom := resources.Get "custom.css" -}}
   <!---->
-  {{- $css := slice $main $custom | resources.Concat "main.css" | minify -}}
-  <link rel="preload stylesheet" as="style" href="{{- $css.Permalink -}}" />
+  {{- $css := slice $main $custom | resources.Concat "main.css" | minify | fingerprint -}}
+  <link rel="preload stylesheet" as="style" href="{{- $css.RelPermalink -}}" />
 
   <!-- dark icon -->
   {{- $dark_icon := "theme.png" -}}
