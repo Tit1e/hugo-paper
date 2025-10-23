@@ -8,11 +8,14 @@
       href="{{- `` | absURL -}}"
       >{{ site.Title }}</a
     >
+    <!-- 主题切换按钮已隐藏 -->
+    <!--
     <div
       class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer {{ if site.Params.monoDarkIcon }}[background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert{{ else }}[background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)]{{ end }} dark:[background-position:right]"
       role="button"
       aria-label="Dark"
     ></div>
+    -->
   </div>
 
   <div
@@ -45,25 +48,35 @@
       localStorage.setItem('dark', isDark);
     };
 
-    // init
+    // init - 默认设置为亮色模式
     const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    // 强制使用亮色模式，忽略系统设置和localStorage
+    setDark(false);
+    // 清除之前的暗色模式设置
+    localStorage.removeItem('dark');
+    
+    // 注释掉原有的初始化逻辑
+    /*
     if (htmlClass.contains('dark')) {
       setDark(true);
     } else {
       const darkVal = localStorage.getItem('dark');
       setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
     }
+    */
 
     // listen system
     darkScheme.addEventListener('change', (event) => {
       setDark(event.matches);
     });
 
-    // manual switch
+    // manual switch - 已禁用主题切换功能
+    /*
     const btnDark = document.querySelector('.btn-dark');
     btnDark.addEventListener('click', () => {
       setDark(localStorage.getItem('dark') !== 'true');
     });
+    */
   </script>
 
   <div
