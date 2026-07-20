@@ -1,3 +1,9 @@
+{{/*
+  [INPUT]: 依赖 Hugo 页面元数据、site.Params、Scratch 与资源管线，按需依赖 math partial
+  [OUTPUT]: 对外提供完整 head 元素、元数据、样式资源、图标与可选脚本
+  [POS]: layouts/partials 的页面头部，被 _default/baseof.html 统一调用
+  [PROTOCOL]: 变更时更新此头部，然后检查 AGENTS.md
+*/}}
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -27,7 +33,7 @@
   </script>
 
   <!-- author -->
-  {{- $site_author := or site.Author.name site.Params.name site.Title -}}
+  {{- $site_author := or site.Params.author site.Params.name site.Title -}}
   <!---->
   {{- if eq .Kind "page" -}}
   <meta name="description" content="{{- .Summary -}}" />

@@ -1,3 +1,9 @@
+{{/*
+  [INPUT]: 依赖 Hugo 页面标题、日期、作者、标签与相邻页面，依赖 mermaid partial 和评论服务配置
+  [OUTPUT]: 对外提供文章详情页 main 内容块、标签、文章导航与评论区域
+  [POS]: layouts/_default 的详情页渲染器，由 baseof.html 注入页面骨架
+  [PROTOCOL]: 变更时更新此头部，然后检查 AGENTS.md
+*/}}
 {{- define "main" -}}
 
 <article>
@@ -9,7 +15,7 @@
       {{- if .Date -}}
       <time>{{- .Date | time.Format ":date_medium" -}}</time>
       {{- end -}}<!---->
-      {{- $single_author := or .Params.Author site.Author.name -}}
+      {{- $single_author := or .Params.author site.Params.author -}}
       <!---->
       {{- if $single_author -}}
       <span class="mx-1">&middot;</span>

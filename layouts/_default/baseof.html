@@ -1,5 +1,12 @@
 <!doctype html>
 
+{{/*
+  [INPUT]: 依赖 Hugo site.Params、site.Language 与 Scratch，依赖 head/header/footer partial
+  [OUTPUT]: 对外提供站点 HTML 基础骨架与 main 内容块
+  [POS]: layouts/_default 的页面基座，被首页、列表页、详情页与 404 页面复用
+  [PROTOCOL]: 变更时更新此头部，然后检查 AGENTS.md
+*/}}
+
 {{- $.Scratch.Delete "bg_color" -}}<!---->
 {{- $.Scratch.Delete "social_list" -}}<!---->
 {{- $.Scratch.Delete "avatar_url" -}}<!---->
@@ -36,7 +43,7 @@
 <html
   class="not-ready lg:text-base"
   style="--bg: {{- $bg_color -}}"
-  lang="{{- or site.LanguageCode site.Language.Lang -}}"
+  lang="{{- or site.Language.Locale site.Language.Lang -}}"
   dir="{{- if site.Params.direction -}}{{- site.Params.direction -}}{{- else -}}ltr{{- end -}}"
 >
   {{- partial "head.html" . -}}
